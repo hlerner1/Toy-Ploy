@@ -17,7 +17,7 @@ public class Title : MonoBehaviour
     }
 
     void StartGame() {
-        Debug.Log("Starting Game");
+        SceneManager.LoadScene("Game");
     }
 
     void LoadInstructions() {
