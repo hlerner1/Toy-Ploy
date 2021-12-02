@@ -16,7 +16,7 @@ public class Game : MonoBehaviour
 
     public Text levelUIText;
 
-    public static int health = 4;
+    public int health = 5;
 
     public static int currentLevel = 0;
     public static string[] currentLevelNames = new string[4]{"Tutorial", "Level 1: Escape The Corner", "Level 2: The Great Glass Table", "Level 3: Dresser Run"};
