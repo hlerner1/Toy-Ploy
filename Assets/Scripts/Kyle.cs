@@ -22,7 +22,7 @@ public class Kyle : MonoBehaviour
     void OnCollisionEnter(Collision c)
  {
      // force is how forcefully we will push the player away from the enemy.
-     float force = 5;
+    //  float force = 5;
      float y_val = transform.position.y;
  
      // If the object we hit is the enemy
@@ -32,7 +32,7 @@ public class Kyle : MonoBehaviour
         
         // while (Vector3.Distance(transform.position, target_pos) > 0.1f){
             Vector3 dir = -(target_pos - transform.position);
-            Debug.Log(dir[0] + " " + dir[1] + " " + dir[2]);
+            // Debug.Log(dir[0] + " " + dir[1] + " " + dir[2]);
             Game game = FindObjectsOfType<Game>()[0];
             game.health--;
             // Vector3 v=dir;
