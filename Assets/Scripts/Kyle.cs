@@ -29,6 +29,12 @@ public class Kyle : MonoBehaviour
     //  float force = 5;
      float y_val = transform.position.y;
  
+
+     if (c.gameObject.tag == "Flag")
+     {
+        Game.currentLevel += 1;
+     }
+
      // If the object we hit is the enemy
      if (c.gameObject.tag == "enemy_train")
      {

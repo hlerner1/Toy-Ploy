@@ -18,6 +18,7 @@ public class Game : MonoBehaviour
 
     public GameObject kyle;
     public AudioClip lowHealthAlarm;
+    public AudioClip levelUpAudio;
 
     private float lowHealthAlarmCooldown = 0f;
 
@@ -28,10 +29,10 @@ public class Game : MonoBehaviour
 
     public static bool isGamePaused = false;
 
+    public static int previousLevel = 0;
     public static int currentLevel = 0;
-    public static string[] currentLevelNames = new string[4]{"Tutorial", "Level 1: Escape The Corner", "Level 2: The Great Glass Table", "Level 3: Dresser Run"};
-    public static Vector3[] levelStartCoordinates = new Vector3[]{new Vector3(-829.02f, 73.6f, 620.5f), new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 0f)};
-
+    public static string[] currentLevelNames = new string[2]{"Tutorial", "Level 1: Escape The Corner",};
+    public static Vector3[] levelStartCoordinates = new Vector3[2]{new Vector3(-829.02f, 73.6f, 620.5f), new Vector3(-774f, 88f, 325f)};
     private Color32 aliveColor = new Color32(0,128,0,100);
     private Color32 dangerColor = new Color32(245, 87, 66,100);
     private Color32 deadColor = new Color32(128,0,0,100);
@@ -71,6 +72,14 @@ public class Game : MonoBehaviour
             return;
         }
 
+        // Check Level and see if we need to load a new one
+        if (currentLevel != previousLevel) {
+            loadCurrentLevel();
+            AudioSource.PlayClipAtPoint(levelUpAudio, kyle.transform.position, 0.5f);
+            previousLevel = currentLevel;
+        }
+
+
         // If Kyle has no health, reload the current level
         if (health == 0){
             loadCurrentLevel();
@@ -97,10 +106,13 @@ public class Game : MonoBehaviour
     void loadCurrentLevel() {
         health = maximumHealth;
         teleportToCurrentLevelStart();
+        kyle.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
 
     void teleportToCurrentLevelStart() {
+        Debug.Log("Loading Level" + currentLevel);
+        Debug.Log("Level Start: " + levelStartCoordinates[currentLevel].x + "," + levelStartCoordinates[currentLevel].y + "," + levelStartCoordinates[currentLevel].z);
         kyle.transform.position = levelStartCoordinates[currentLevel];
     }
 
