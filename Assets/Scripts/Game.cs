@@ -17,11 +17,14 @@ public class Game : MonoBehaviour
     public GameObject gamePauseText;
 
     public GameObject kyle;
+    public AudioClip lowHealthAlarm;
+
+    private float lowHealthAlarmCooldown = 0f;
 
     public Text levelUIText;
 
     public readonly static int maximumHealth = 5;
-    public int health = maximumHealth;
+    public int health;
 
     public static bool isGamePaused = false;
 
@@ -30,6 +33,7 @@ public class Game : MonoBehaviour
     public static Vector3[] levelStartCoordinates = new Vector3[]{new Vector3(-829.02f, 73.6f, 620.5f), new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 0f)};
 
     private Color32 aliveColor = new Color32(0,128,0,100);
+    private Color32 dangerColor = new Color32(245, 87, 66,100);
     private Color32 deadColor = new Color32(128,0,0,100);
 
     // Start is called before the first frame update
@@ -41,6 +45,9 @@ public class Game : MonoBehaviour
         // Ensure game is not paused
         isGamePaused = false;
         Time.timeScale = 1;
+
+        // Set Health
+        health = maximumHealth;
     }
 
     // Update is called once per frame
@@ -68,6 +75,16 @@ public class Game : MonoBehaviour
         if (health == 0){
             loadCurrentLevel();
         }
+
+        if (health > 0 && health <= 2 && lowHealthAlarmCooldown <= 0) {
+            AudioSource.PlayClipAtPoint(lowHealthAlarm, kyle.transform.position, 0.5f);
+            lowHealthAlarmCooldown = 200f;
+        } else if (health > 0 && health <= 2) {
+            lowHealthAlarmCooldown -= 1f;
+        } else {
+            lowHealthAlarmCooldown = 200f;
+        }
+
         // Correctly Draw The Health Bars of the Character
         HandleHealthBars();
 
@@ -111,6 +128,11 @@ public class Game : MonoBehaviour
 
         if (health >= 2) {
             healthBar2.GetComponent<Image>().color = aliveColor;
+            if (health < 3) {
+                healthBar3.GetComponent<Image>().color = dangerColor;
+                healthBar4.GetComponent<Image>().color = dangerColor;
+                healthBar5.GetComponent<Image>().color = dangerColor;
+            }
         }
         else {
             healthBar2.GetComponent<Image>().color = deadColor;
@@ -118,6 +140,12 @@ public class Game : MonoBehaviour
 
         if (health >= 1) {
             healthBar1.GetComponent<Image>().color = aliveColor;
+            if (health < 2) {
+                healthBar2.GetComponent<Image>().color = dangerColor;
+                healthBar3.GetComponent<Image>().color = dangerColor;
+                healthBar4.GetComponent<Image>().color = dangerColor;
+                healthBar5.GetComponent<Image>().color = dangerColor;
+            }
         }
         else {
             healthBar1.GetComponent<Image>().color = deadColor;

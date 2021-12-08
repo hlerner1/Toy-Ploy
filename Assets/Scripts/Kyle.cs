@@ -6,6 +6,10 @@ public class Kyle : MonoBehaviour
 {
     public float radius = 20.0F;
     public float power = 10.0F;
+
+    public GameObject kyle;
+    public AudioClip damageClip;
+
     // public health h;
     private GameObject train;
     // Start is called before the first frame update
@@ -46,6 +50,9 @@ public class Kyle : MonoBehaviour
             // Vector3 t_vec = new Vector3(transform.position.x, y_val, transform.position.z);
             // transform.position = t_vec;
         // }
+
+        AudioSource.PlayClipAtPoint(damageClip, kyle.transform.position);
+
      }
  }
 }

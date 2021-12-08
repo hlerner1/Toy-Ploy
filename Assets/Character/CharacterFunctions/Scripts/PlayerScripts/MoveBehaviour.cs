@@ -11,11 +11,20 @@ public class MoveBehaviour : GenericBehaviour
 	public float jumpHeight = 1.5f;                 // Default jump height.
 	public float jumpIntertialForce = 10f;          // Default horizontal inertial force when jumping.
 
+	public GameObject Kyle;
+
+
 	private float speed, speedSeeker;               // Moving speed.
 	private int jumpBool;                           // Animator variable related to jumping.
 	private int groundedBool;                       // Animator variable related to whether or not the player is on ground.
 	private bool jump;                              // Boolean to determine whether or not the player started a jump.
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
+
+
+	// Audio Source for Walk
+	public AudioClip walkClip;
+	public AudioClip jumpClip;
+
 
 	// Start is always called after any Awake functions.
 	void Start()
@@ -29,6 +38,10 @@ public class MoveBehaviour : GenericBehaviour
 		behaviourManager.SubscribeBehaviour(this);
 		behaviourManager.RegisterDefaultBehaviour(this.behaviourCode);
 		speedSeeker = runSpeed;
+
+		// Load Audio
+		// walkClip = Resources.Load<AudioClip>("Assets/audio/alarm.wav");
+
 	}
 
 	// Update is used to set features regardless the active behaviour.
@@ -72,6 +85,9 @@ public class MoveBehaviour : GenericBehaviour
 				float velocity = 2f * Mathf.Abs(Physics.gravity.y) * jumpHeight;
 				velocity = Mathf.Sqrt(velocity);
 				behaviourManager.GetRigidBody.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
+
+				// Add Audio to Jump
+				AudioSource.PlayClipAtPoint(jumpClip, Kyle.transform.position);
 			}
 		}
 		// Is already jumping?
@@ -97,6 +113,7 @@ public class MoveBehaviour : GenericBehaviour
 		}
 	}
 
+	float stepCooldown = 0f;
 	// Deal with the basic player movement
 	void MovementManagement(float horizontal, float vertical)
 	{
@@ -120,12 +137,27 @@ public class MoveBehaviour : GenericBehaviour
 		speedSeeker += Input.GetAxis("Mouse ScrollWheel");
 		speedSeeker = Mathf.Clamp(speedSeeker, walkSpeed, runSpeed);
 		speed *= speedSeeker;
+
 		if (behaviourManager.IsSprinting())
 		{
 			speed = sprintSpeed;
+			
 		}
 
 		behaviourManager.GetAnim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
+
+		// Audio Footstep Effects
+		if (speed > 0f && behaviourManager.IsGrounded() && stepCooldown <= 0) {
+			AudioSource.PlayClipAtPoint(walkClip, Kyle.transform.position);
+			stepCooldown = 16;
+		} else if (stepCooldown > 0) {
+			if (behaviourManager.IsSprinting()) {
+				stepCooldown -= 1.5f;
+			} else {
+				stepCooldown -= 1f;
+			}
+		}
+
 	}
 
 	// Remove vertical rigidbody velocity.
