@@ -78,11 +78,11 @@ public class Game : MonoBehaviour
 
         if (health > 0 && health <= 2 && lowHealthAlarmCooldown <= 0) {
             AudioSource.PlayClipAtPoint(lowHealthAlarm, kyle.transform.position, 0.5f);
-            lowHealthAlarmCooldown = 200f;
+            lowHealthAlarmCooldown = 500f;
         } else if (health > 0 && health <= 2) {
             lowHealthAlarmCooldown -= 1f;
         } else {
-            lowHealthAlarmCooldown = 200f;
+            lowHealthAlarmCooldown = 500f;
         }
 
         // Correctly Draw The Health Bars of the Character
