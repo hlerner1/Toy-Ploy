@@ -72,7 +72,7 @@ public class Game : MonoBehaviour
         HandleHealthBars();
 
         levelUIText.text = currentLevelNames[currentLevel];
-
+        
 
     }
 
