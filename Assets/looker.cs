@@ -12,7 +12,7 @@ public class looker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        guard.GetComponent<CapsuleCollider>().enabled = true;
     }
 
     // Update is called once per frame
@@ -39,7 +39,7 @@ public class looker : MonoBehaviour
             Debug.Log("player");
             guard.GetComponent<Guard>().enabled = true;
             // GetComponent<MeshCollider>().enabled = false;
-            guard.GetComponent<MeshCollider>().enabled = true;
+            
             reset = 0.1f;
         }
     }
