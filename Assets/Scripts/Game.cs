@@ -42,7 +42,7 @@ public class Game : MonoBehaviour
     void Start()
     {
         no_health = false;
-        teleportToCurrentLevelStart();
+        // teleportToCurrentLevelStart();
         gamePauseText.gameObject.SetActive(false);
 
         // Ensure game is not paused

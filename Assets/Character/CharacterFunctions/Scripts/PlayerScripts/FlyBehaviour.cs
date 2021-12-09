@@ -4,8 +4,8 @@
 public class FlyBehaviour : GenericBehaviour
 {
 	public string flyButton = "Fly";              // Default fly button.
-	public float flySpeed = 4.0f;                 // Default flying speed.
-	public float sprintFactor = 2.0f;             // How much sprinting affects fly speed.
+	public float flySpeed = 1.0f;                 // Default flying speed.
+	public float sprintFactor = 1.0f;             // How much sprinting affects fly speed.
 	public float flyMaxVerticalAngle = 60f;       // Angle to clamp camera vertical movement when flying.
 
 	private int flyBool;                          // Animator variable related to flying.
