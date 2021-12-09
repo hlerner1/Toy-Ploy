@@ -69,7 +69,7 @@ public class Game : MonoBehaviour
             SceneManager.LoadScene("Title");
         }
 
-        // If game is paused, do not allow any actions in update
+        // If game is paused, do not allow any actions in update1
         if (isGamePaused) {
             return;
         }
@@ -84,8 +84,7 @@ public class Game : MonoBehaviour
 
         // If Kyle has no health, reload the current level
         if (health == 0){
-            no_health = true;
-            loadCurrentLevel();
+            SceneManager.LoadScene("EndScreen");
         }
 
         if (health > 0 && health <= 2 && lowHealthAlarmCooldown <= 0) {
