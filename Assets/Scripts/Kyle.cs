@@ -33,6 +33,7 @@ public class Kyle : MonoBehaviour
      if (c.gameObject.tag == "Flag")
      {
         Game.currentLevel += 1;
+        kyle.GetComponent<Rigidbody>().velocity = Vector3.zero;
      }
 
      // If the object we hit is the enemy
