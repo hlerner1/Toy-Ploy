@@ -31,8 +31,8 @@ public class Game : MonoBehaviour
 
     public static int previousLevel = 0;
     public static int currentLevel = 0;
-    public static string[] currentLevelNames = new string[2]{"Tutorial", "Level 1: Escape The Corner",};
-    public static Vector3[] levelStartCoordinates = new Vector3[2]{new Vector3(-829.02f, 73.6f, 620.5f), new Vector3(-774f, 88f, 325f)};
+    public static string[] currentLevelNames = new string[3]{"Tutorial", "Level 1: Escape The Corner", "Level 2: Couch Crawl"};
+    public static Vector3[] levelStartCoordinates = new Vector3[3]{new Vector3(-829.02f, 73.6f, 620.5f), new Vector3(-774f, 88f, 325f), new Vector3(-273f, 156f, 372f)};
     private Color32 aliveColor = new Color32(0,128,0,100);
     private Color32 dangerColor = new Color32(245, 87, 66,100);
     private Color32 deadColor = new Color32(128,0,0,100);
@@ -65,6 +65,10 @@ public class Game : MonoBehaviour
         // If game is paused, allow quitting via "q" to title
         if (isGamePaused && Input.GetKeyDown("q")) {
             SceneManager.LoadScene("Title");
+        }
+
+        if (Input.GetKeyDown("x")) {
+            currentLevel += 1;
         }
 
         // If game is paused, do not allow any actions in update1
