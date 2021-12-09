@@ -8,16 +8,27 @@ public class Guard : MonoBehaviour
     public GameObject player;
 
     private NavMeshAgent navmesh;
+    private Animator animation_controller;
+    private CharacterController character_controller;
+
 
     // Start is called before the first frame update
     void Start()
     {
         navmesh = GetComponent<NavMeshAgent>();
+        animation_controller = GetComponent<Animator>();
+        character_controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        navmesh.destination = player.transform.position;
+        if (animation_controller.GetFloat("Speed") > 0f){
+            navmesh.destination = player.transform.position;
+        }
+        else{
+            navmesh.destination = transform.position;
+        }
+
     }
 }

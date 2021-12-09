@@ -8,11 +8,15 @@ public class looker : MonoBehaviour
     public GameObject guard;
     private float reset = 0.1f;
     private bool movingDown;
+    private Animator animation_controller;
+    private CharacterController character_controller;
 
     // Start is called before the first frame update
     void Start()
     {
         guard.GetComponent<CapsuleCollider>().enabled = true;
+        animation_controller = guard.GetComponent<Animator>();
+        character_controller = guard.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -41,7 +45,15 @@ public class looker : MonoBehaviour
             // GetComponent<MeshCollider>().enabled = false;
             
             reset = 0.1f;
+            animation_controller.SetFloat("Speed", .1f);
+            animation_controller.SetBool("targeting", true);
         }
     }
+
+    private void OnTriggerExit(Collider other) {
+        // guard.GetComponent<Guard>().enabled = false;
+        animation_controller.SetFloat("Speed", 0f);
+    }
+    
 
 }
