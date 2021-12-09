@@ -49,6 +49,9 @@ public class Game : MonoBehaviour
 
         // Set Health
         health = maximumHealth;
+
+        // Load Level
+        loadCurrentLevel();
     }
 
     // Update is called once per frame
