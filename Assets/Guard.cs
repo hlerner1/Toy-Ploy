@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Guard : MonoBehaviour
 {
     public GameObject player;
+    public float guard_speed;
 
     private NavMeshAgent navmesh;
     private Animator animation_controller;
@@ -25,9 +26,11 @@ public class Guard : MonoBehaviour
     {
         if (animation_controller.GetFloat("Speed") > 0f){
             navmesh.destination = player.transform.position;
+            navmesh.speed = guard_speed;
         }
         else{
             navmesh.destination = transform.position;
+            navmesh.speed = 0f;
         }
 
     }
