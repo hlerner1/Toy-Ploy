@@ -6,6 +6,9 @@ public class looker : MonoBehaviour
 {
      	
     public GameObject guard;
+    public string enemy_type;
+    public bool in_range;
+
     private float reset = 0.1f;
     private bool movingDown;
     private Animator animation_controller;
@@ -14,9 +17,15 @@ public class looker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        guard.GetComponent<CapsuleCollider>().enabled = true;
-        animation_controller = guard.GetComponent<Animator>();
-        character_controller = guard.GetComponent<CharacterController>();
+        in_range = false;
+        if (enemy_type.Equals("train")){
+            guard.GetComponent<MeshCollider>().enabled = true;
+        }
+        else{
+            guard.GetComponent<CapsuleCollider>().enabled = true;
+            animation_controller = guard.GetComponent<Animator>();
+        }
+        // character_controller = guard.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -38,21 +47,30 @@ public class looker : MonoBehaviour
         }
     }
     private void OnTriggerStay(Collider other) {
-        Debug.Log("collision!");
         if (other.gameObject.tag == "Player") {
-            Debug.Log("player");
+            Debug.Log("collision!");
             guard.GetComponent<Guard>().enabled = true;
             // GetComponent<MeshCollider>().enabled = false;
             
             reset = 0.1f;
-            animation_controller.SetFloat("Speed", .1f);
-            animation_controller.SetBool("targeting", true);
+            if (enemy_type.Equals("train")){
+                in_range = true;
+            }
+            else{
+                animation_controller.SetFloat("Speed", .1f);
+                animation_controller.SetBool("targeting", true);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other) {
         // guard.GetComponent<Guard>().enabled = false;
-        animation_controller.SetFloat("Speed", 0f);
+        if (enemy_type.Equals("train")){
+            in_range = false;
+        }
+        else{
+            animation_controller.SetFloat("Speed", 0f);
+        }
     }
     
 

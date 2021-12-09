@@ -60,5 +60,36 @@ public class Kyle : MonoBehaviour
         AudioSource.PlayClipAtPoint(damageClip, kyle.transform.position);
 
      }
+     if (c.gameObject.tag == "enemy_doll")
+     {
+        Vector3 target_pos = c.contacts[0].point;
+        
+        // while (Vector3.Distance(transform.position, target_pos) > 0.1f){
+            Vector3 dir = -(target_pos - transform.position);
+            // Debug.Log(dir[0] + " " + dir[1] + " " + dir[2]);
+            Game game = FindObjectsOfType<Game>()[0];
+            game.health--;
+            // Vector3 v=dir;
+            // Vector3 direction = v;
+            // if (v.magnitude != 0){
+            //     direction = v / v.magnitude; 
+            // }
+            // float time_step = force * Time.deltaTime;
+            // transform.position += direction * time_step;
+            // float y_val = transform.position.y;
+            // Vector3 t_vec = new Vector3(transform.position.x, y_val, transform.position.z);
+            // transform.position = t_vec;
+        // }
+
+        AudioSource.PlayClipAtPoint(damageClip, kyle.transform.position);
+
+     }
+     else if (c.gameObject.tag == "enemy_train")
+     {
+        Game game = FindObjectsOfType<Game>()[0];
+        AudioSource.PlayClipAtPoint(damageClip, kyle.transform.position);
+        game.health -= game.health;
+
+     }
  }
 }

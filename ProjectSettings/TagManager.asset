@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemy_train
   - Flag
+  - enemy_doll
   layers:
   - Default
   - TransparentFX

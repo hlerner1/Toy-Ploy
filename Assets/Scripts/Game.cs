@@ -36,10 +36,12 @@ public class Game : MonoBehaviour
     private Color32 aliveColor = new Color32(0,128,0,100);
     private Color32 dangerColor = new Color32(245, 87, 66,100);
     private Color32 deadColor = new Color32(128,0,0,100);
+    private bool no_health;
 
     // Start is called before the first frame update
     void Start()
     {
+        no_health = false;
         teleportToCurrentLevelStart();
         gamePauseText.gameObject.SetActive(false);
 
@@ -82,6 +84,7 @@ public class Game : MonoBehaviour
 
         // If Kyle has no health, reload the current level
         if (health == 0){
+            no_health = true;
             loadCurrentLevel();
         }
 
