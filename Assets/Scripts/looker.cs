@@ -53,24 +53,20 @@ public class looker : MonoBehaviour
             // GetComponent<MeshCollider>().enabled = false;
             
             reset = 0.1f;
-            if (enemy_type.Equals("train")){
-                in_range = true;
-            }
-            else{
+            if (!enemy_type.Equals("train")){
                 animation_controller.SetFloat("Speed", .1f);
                 animation_controller.SetBool("targeting", true);
             }
+            in_range = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
         // guard.GetComponent<Guard>().enabled = false;
-        if (enemy_type.Equals("train")){
-            in_range = false;
-        }
-        else{
+        if (!enemy_type.Equals("train")){
             animation_controller.SetFloat("Speed", 0f);
         }
+        in_range = false;
     }
     
 
