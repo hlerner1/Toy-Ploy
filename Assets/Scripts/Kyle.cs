@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Kyle : MonoBehaviour
 {
@@ -35,6 +37,12 @@ public class Kyle : MonoBehaviour
         Game.currentLevel += 1;
         kyle.GetComponent<Rigidbody>().velocity = Vector3.zero;
      }
+
+    if (c.gameObject.tag == "Victory")
+    {
+        SceneManager.LoadScene("WinScreen");
+        Game.currentLevel = 0;
+    }
 
      // If the object we hit is the enemy
      if (c.gameObject.tag == "enemy_train")
