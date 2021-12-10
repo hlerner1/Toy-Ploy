@@ -17,7 +17,8 @@ Work Done:
 
 
 Overview:
-All of the scripts located in `Assets/Scripts` were created by us and us alone. We collected all main game assets together and placed them in `Assets/MainGameObjects`
+All of the scripts located in `Assets/Scripts` were created by us and us alone (the small exception to this is Guard and Looker which were made with help from https://www.red-gate.com/simple-talk/development/dotnet-development/creating-a-simple-ai-with-unity-and-c/ tutorial. We modified a significant portion of the logic within these files, but the base template came from the tutorial).
+We collected all main game assets together and placed them in `Assets/MainGameObjects`
 
 
 
@@ -42,9 +43,12 @@ All of the scripts located in `Assets/Scripts` were created by us and us alone. 
 ---------------
  Hannah's Work
 ---------------
-- Hannah created the AnimationController for the enemy AI
+- Hannah created much of the game logic for the AI with the assistance of this tutorial: https://www.red-gate.com/simple-talk/development/dotnet-development/creating-a-simple-ai-with-unity-and-c/
+- Hannah created a system to allow for easy additions of different AI toys that dealt different amounts of damage
+- Hannah fine-tuned the AnimationController for the enemy AI
 - Hannah fine-tuned the player character controller
-- Hannah worked with the NavMeshAgents and AI pathfinding
+- Hannah modified some of the physics in the player character to be more realistic for this game
+- Hannah worked with the NavMeshAgents to allow for AI pathfinding
 - Hannah created many of the menu screens. These are all found in `Assets/Scenes`
 
 
