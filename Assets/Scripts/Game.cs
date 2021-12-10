@@ -113,7 +113,7 @@ public class Game : MonoBehaviour
     void loadCurrentLevel() {
         health = maximumHealth;
         teleportToCurrentLevelStart();
-        // kyle.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        kyle.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
 
