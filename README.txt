@@ -25,8 +25,10 @@ We collected all main game assets together and placed them in `Assets/MainGameOb
 ---------------
  Work Done Together
 ---------------
-- Cody and Hannah created the tutorial level together
-- Cody and Hannah both worked together on getting animations and animation controllers to work for both the player and the AI
+- Cody and Hannah created the tutorial level together (See tutorial level in video)
+- Cody and Hannah both worked together on getting animations and animation controllers to work for both the player and the AI. We
+did not create the animations ourselves, but integrated it into the other assets we found on the store such as the robot and enemy AI
+ourselves.
 
 
 
@@ -35,22 +37,21 @@ We collected all main game assets together and placed them in `Assets/MainGameOb
  Cody's Work
 ---------------
 - Cody created the level design for level 1 and level 2
-- Cody implemented all of the audio in the game (Assets/Character/CharacterFunctions/Scripts/PlayerScripts/MoveBehaviour.cs, Lines: 89-90, 144-154)
-- Cody worked on the base character controller and connecting it to the main game object
-- Cody handled game logic of scene transitions, dying, and respawning
-- Cody did a lot of work on the main game scene. These are all found in `Assets/Scenes`
+- Cody implemented all of the audio in the game. Sounds are located in Assets/Audio and relevant lines of code are in (Assets/Character/CharacterFunctions/Scripts/PlayerScripts/MoveBehaviour.cs, Lines: 89-90, 144-154)
+- Cody worked on the animation controller for the enemy and connecting it to the main game object (Assets/Character/CharacterFunctions/Animators/EnemyController.controller).
+- Cody handled game logic of scene transitions, dying, and respawning. (EndGame.cs, Title.cs, Storyline.cs)
+- Cody did a lot of work on the main game scene (all in Game.cs). The scene files are all found in `Assets/Scenes` and the assets used are found in Assets/MainGameObjects.
 
 ---------------
  Hannah's Work
 ---------------
 - Hannah created much of the game logic for the AI with the assistance of this tutorial: https://www.red-gate.com/simple-talk/development/dotnet-development/creating-a-simple-ai-with-unity-and-c/
-- Hannah created a system to allow for easy additions of different AI toys that dealt different amounts of damage
-- Hannah fine-tuned the AnimationController for the enemy AI
-- Hannah fine-tuned the player character controller
-- Hannah modified some of the physics in the player character to be more realistic for this game
-- Hannah worked with the NavMeshAgents to allow for AI pathfinding
-- Hannah created many of the menu screens. These are all found in `Assets/Scenes`
-
+See guard.cs and looker.cs for this code.
+- Hannah created a system to allow for easy additions of different AI toys that dealt different amounts of damage. This is guard.cs
+- Hannah fine-tuned the existing AnimationController for the enemy AI (Assets\MainGameObjects\Enemies\AIController.cs)
+- Hannah fine-tuned the player character controller (Setting movement specific variables in Assets\Character\CharacterFunctions\Scripts\PlayerScripts\MoveBehaviour.cs)
+- Hannah modified some of the physics in the player character to be more realistic for this game (Kyle.cs)
+- Hannah worked with the NavMeshAgents to allow for AI pathfinding (Guard.cs)
 
 ---------------------------------------------
 Packages Used:
