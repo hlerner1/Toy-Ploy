@@ -1,28 +1,57 @@
-# Toy-Ploy
-A Compsci-576 Final Project.
+---------------------------------------------
 
-## Team Members:
+        Toy Ploy: A Compsci-576 Final Project
+
+---------------------------------------------
+
+
+---------------------------------------------
+Team Members:
+---------------------------------------------
 - Cody Richter
 - Hannah Lerner
 
-## Work Done:
-- Hannah worked with the NavMeshAgents and AI pathfinding
+---------------------------------------------
+Work Done:
+---------------------------------------------
+
+
+Overview:
+All of the scripts located in `Assets/Scripts` were created by us and us alone. We collected all main game assets together and placed them in `Assets/MainGameObjects`
+
+
+
+---------------
+ Work Done Together
+---------------
 - Cody and Hannah created the tutorial level together
-- Cody created the level design for level 1 and level 2
 - Cody and Hannah both worked together on getting animations and animation controllers to work for both the player and the AI
-- Both of us created and programmed all the scripts in `Assets/Scripts`
-- Hannah created many of the menu screens while Cody did a lot of work on the main game scene. These are all found in `Assets/Scenes`
-- Hannah created the AnimationController for the enemy AI
+
+
+
+
+---------------
+ Cody's Work
+---------------
+- Cody created the level design for level 1 and level 2
+- Cody implemented all of the audio in the game (Assets/Character/CharacterFunctions/Scripts/PlayerScripts/MoveBehaviour.cs, Lines: 89-90, 144-154)
+- Cody worked on the base character controller and connecting it to the main game object
 - Cody handled game logic of scene transitions, dying, and respawning
-- Hannah fine-tuned the player character controller, and Cody implemented the base character controller
-- Cody implemented all of the audio in the game
-- We collected all main game assets together and placed them in `Assets/MainGameObjects`
+- Cody did a lot of work on the main game scene. These are all found in `Assets/Scenes`
 
-The following code was also written by us:
-The following lines in `Assets/Character/CharacterFunctions/Scripts/PlayerScripts/MoveBehaviour.cs`:
-Lines: `89-90`, `144-154`
+---------------
+ Hannah's Work
+---------------
+- Hannah created the AnimationController for the enemy AI
+- Hannah fine-tuned the player character controller
+- Hannah worked with the NavMeshAgents and AI pathfinding
+- Hannah created many of the menu screens. These are all found in `Assets/Scenes`
 
-## Packages Used
+
+---------------------------------------------
+Packages Used:
+---------------------------------------------
+
 - 3D Character Dummy: https://assetstore.unity.com/packages/3d/characters/humanoids/humans/3d-character-dummy-178395
 - 3rd Person Controller + Fly Mode: https://assetstore.unity.com/packages/templates/systems/3rd-person-controller-fly-mode-28647
 - Basic Motions FREE: https://assetstore.unity.com/packages/3d/animations/basic-motions-free-154271
